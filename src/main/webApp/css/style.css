@@ -1,0 +1,72 @@
+/* ESTILOS DE LA APLICACION */
+body {
+	padding-top: 90px;
+}
+
+input[type=text]:focus:not ([readonly] ), input[type=password]:focus:not
+	([readonly] ) {
+	border-bottom: 1px solid #F90 !important;
+	box-shadow: 0 1px 0 0 #FF0 !important;
+}
+
+.fa {
+	color: #ff6e40;
+}
+
+.table-orange .thead-inverse th {
+	background-color: #ff6e40;
+}
+
+.table-orange, .table-orange>td {
+	background-color: #fff3e0;
+}
+
+.dark-orange-font, a:link {
+	color: #dd2c00;
+}
+
+a:visited, a:hover {
+	color: #ff6e40;
+}
+
+th {
+	text-align: center;
+}
+
+.card {
+	width: 350px;
+	margin: auto;
+	margin-top: 15px;
+}
+
+.fa {
+	color: #ff6e40;
+}
+
+#contenido-formulario-login {
+	padding: 10px;
+}
+
+#formulario-login-botones {
+	padding: 9px 5px;
+}
+
+.card h3 {
+	padding: 15px 10px;
+	font-weight: 300;
+}
+
+input[type=text]:focus:not ([readonly] ) +label, input[type=password]:focus:not
+	([readonly] ) +label {
+	color: #757575;
+}
+
+.md-form .prefix.active {
+	color: #d73d0e !important;
+}
+
+.md-form .prefix ~input, .md-form .prefix ~textarea {
+	margin-left: 3rem;
+	width: 80% !important;
+	width: calc(100% - 3rem);
+}
