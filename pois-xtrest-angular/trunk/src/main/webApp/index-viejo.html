@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="poiApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>B&uacute;squeda de Puntos de Inter&eacute;s</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+</head>
+
+<body ng-controller="busquedaCtrl as busqueda">
+    <!--Navbar-->
+    <nav class="navbar navbar-fixed-top navbar-dark deep-orange darken-2">
+        <!-- green darken-3 -->
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="container">
+            <!--Collapse content-->
+            <div class="collapse navbar-toggleable-xs" id="collapseEx">
+                <!--Navbar Brand-->
+                <div id="usuario" class="navbar-brand">
+                    Usuario: {{busqueda.usuario.nick}}
+                </div>
+                <!--Search form-->
+                <form class="form-inline">
+                    <div class="form-group has-warning">
+                        <label for="criterio" class="form-control-label sr-only">Criterio de b&uacute;squeda</label>
+                        <input class="form-control" id="criterio" type="text" placeholder="Criterio de B&uacute;squeda" ng-model="busqueda.criterio" autofocus="autofocus"></input>
+                    </div>
+                    <button type="submit" class="btn btn-deep-orange" ng-click="busqueda.buscar()">
+                        <!--btn-light-green-->
+                        <i class="fa fa-search" aria-hidden="true"> </i> Buscar
+                    </button>
+                </form>
+            </div>
+            <!--/.Collapse content-->
+        </div>
+    </nav>
+    <!--/.Navbar-->
+    <main>
+        <!--Main layout-->
+        <div class="container">
+            <!--First row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!--Panel-->
+                    <div>
+                        <h4 class="h4-responsive dark-orange-font"><strong>Resultados:</strong></h4>
+                        <div>
+                            <table class="table table-striped table-hover table-orange" >
+                                <thead class="thead-inverse text-xs-center">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Direcci&oacute;n</th>
+                                        <th class="text-xs-center">Cerca</th>
+                                        <th class="text-xs-center">Favorito</th>
+                                        <th class="text-xs-center">Disponible</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat= "poi in busqueda.resultado">
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <a title="Ver Detalles" href="#" data-toggle="modal" data-target="#myModal">
+                                               {{poi.getNombre()}}
+                                            </a>
+                                        </td>
+                                        <td>{{poi.direccion}}</td>
+                                        <td class="text-xs-center"><i class="fa fa-street-view fa-lg" ng-show="poi.estaCerca(busqueda.usuario.getPosicion())"></i>
+                                        </td>
+                                        <td class="text-xs-center"><i class="fa fa-heart fa-lg" ng-show="busqueda.usuario.estaEnFavoritos(poi)"></i></td>
+                                        <td class="text-xs-center"><i class="fa fa-check-square-o fa-lg" ng-show="poi.disponibleAhora()"></i>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.Panel-->
+                </div>
+                <!--/.First row-->
+            </div>
+        </div>
+        <!--/.Main layout-->
+    </main>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	        <!--Content-->
+	        <div class="modal-content">
+	            <!--Header-->
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	                <h4 class="modal-title" id="myModalLabel">Banco</h4>
+	            </div>
+	            <!--Body-->
+	            <div class="modal-body">
+	                <p>Direcci&oacute;n: {{poi.direccion}}</p>
+	                <p>Barrio: {{poi.barrio}}</p>
+	            </div>
+	            <!--Footer-->
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+	                <button type="button" class="btn btn-primary">Guardar</button>
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+    <!-- librerias -->
+    <script type="text/javascript" src="js/lib/geodds.js"></script>
+    <script type="text/javascript" src="js/lib/utils.js"></script>
+    <!-- pois-domains -->
+    <script type="text/javascript" src="js/pois-domain/poi+opinion.js"></script>
+    <script type="text/javascript" src="js/pois-domain/horario.js"></script>
+    <script type="text/javascript" src="js/pois-domain/banco.js"></script>
+    <script type="text/javascript" src="js/pois-domain/cgp+servicio.js"></script>
+    <script type="text/javascript" src="js/pois-domain/colectivo.js"></script>
+    <script type="text/javascript" src="js/pois-domain/banco.js"></script>
+    <script type="text/javascript" src="js/pois-domain/gps.js"></script>
+    <script type="text/javascript" src="js/pois-domain/local.js"></script>
+    <script type="text/javascript" src="js/pois-domain/usuario.js"></script>
+    <!-- poiService.js -->
+    <script type="text/javascript" src="js/services/poiService.js"></script>
+    <!-- app.js -->
+    <script type="text/javascript" src="js/controllers/app.js"></script>
+</body>
+
+</html>
