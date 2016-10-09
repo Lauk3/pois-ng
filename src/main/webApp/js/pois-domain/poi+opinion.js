@@ -66,3 +66,46 @@ Opinion.prototype = {
         return this;
     },
 };
+
+POI.asPOI = function(jsonPOI){
+	var poi;
+		/***		BANCOS		*****/
+	
+	if (jsonPOI.banco)
+		poi = angular.extend(new Banco(), jsonPOI);
+		
+		/***		COLECTIVOS		*****/
+		
+	else if (jsonPOI.paradas) {
+		poi = angular.extend(new Colectivo(), jsonPOI);
+		poi.paradas = _.map(poi.paradas, function(parada){
+			parada = angular.extend(new ParadaDeColectivo(), parada);
+			parada.ubicacion = angular.extend(new Point, parada.ubicacion)
+			return parada;
+		});
+
+	}
+		/***		CGPS		*****/
+	
+	else if (jsonPOI.comuna) {
+		poi = angular.extend(new CGP(), jsonPOI);
+		poi.servicios = extendAll(poi.servicios, new Servicio());
+		poi.comuna = angular.extend(new Comuna(), poi.comuna);
+		poi.comuna.zona = angular.extend(new Polygon(), poi.comuna.zona);
+		poi.comuna.zona.surface =_.map(poi.comuna.zona.surface, function(elem){
+			return angular.extend(new Point(), elem);
+		});
+	}		
+		
+		/***		LOCALES		*****/
+		
+	else {
+		poi = angular.extend(new Local(), jsonPOI);
+		poi.horarios = angular.extend(new Horario(), poi.horarios);
+	}
+	poi.opiniones = _.map(poi.opiniones, function(elem){
+		return angular.extend(new Opinion(), elem);
+	});
+	poi.ubicacion = angular.extend(new Point, poi.ubicacion);
+	return poi;
+};
