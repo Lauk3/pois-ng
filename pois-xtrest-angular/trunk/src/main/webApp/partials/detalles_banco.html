@@ -1,0 +1,9 @@
+<div>
+    <p>{{poi.nombre}}</p>
+    <p>Direccion: {{poi.direccion}}</p>
+    <p>Barrio: {{poi.barrio}}</p>
+    <l>
+        <td ng-repeat="servicio in poi.servicios"/>
+    </l>
+    <div ng-include="'partials/poi.html'"></div>
+</div>
