@@ -22,3 +22,9 @@ function sum(array) {
 function horaMilitar(date){
 	return date.getHours() * 100 + date.getMinutes(); 
 };
+function extendAll(jsonList, tipo){
+	return _.map(jsonList, function(elem){
+		return angular.extend(tipo, elem);
+	});
+
+}
