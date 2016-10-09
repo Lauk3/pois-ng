@@ -3,9 +3,11 @@ package ar.edu.unsam.grupo2.pois
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.time.LocalDateTime
 import net.sf.oval.constraint.Assert
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @Accessors
 @Assert(expr="false", lang="js")
+@JsonIgnoreProperties(#['id', 'opiniones','icono', 'nombre','rating', 'linea'])
 class ParadaDeColectivos extends POI {
 
 	LineaDeColectivos linea

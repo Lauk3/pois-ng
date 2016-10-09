@@ -9,7 +9,7 @@ import org.uqbar.geodds.Point
 
 import static extension ar.edu.unsam.grupo2.util.StringUtil.*
 import org.uqbar.commons.utils.Observable
-
+import com.fasterxml.jackson.annotation.JsonProperty
 
 @Observable
 class LineaDeColectivos extends POI {
@@ -17,6 +17,7 @@ class LineaDeColectivos extends POI {
 	String nroLinea
 	@NotNull
 	@MinSize(1)
+	@JsonProperty("paradas")
 	List<ParadaDeColectivos> paradas = new ArrayList<ParadaDeColectivos>
 
 	new(int _nroLinea) {
