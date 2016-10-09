@@ -20,4 +20,5 @@ class StringUtil {
 	static def boolean contiene(String nombre, String valorDeBusqueda) {
 		toLowerySacarAcentos(nombre).contains(toLowerySacarAcentos(valorDeBusqueda))
 	}
+
 }
