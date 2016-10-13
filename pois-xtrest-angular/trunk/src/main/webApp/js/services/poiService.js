@@ -1,8 +1,8 @@
 poiApp.service("poiService", function($http) {
 
-		this.findAll = function(callback) {
-			$http.get("/pois").then(callback);
-		};
+//		this.findAll = function(callback) {
+//			$http.get("/pois").then(callback);
+//		};
 		
 		this.findByCriterio = function (criterio, callback) {
 			$http.get("/pois/" + criterio).then(callback);
