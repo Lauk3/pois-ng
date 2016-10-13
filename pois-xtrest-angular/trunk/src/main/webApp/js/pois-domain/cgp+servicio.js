@@ -21,8 +21,8 @@ CGP.prototype.servicio = function(nombreServicio) {
 	return servicio;
 };
 	
-CGP.prototype.getNombreCGP = function() {
-    return ( "CGP Nº" + this.comuna.nro);
+CGP.prototype.getNombre = function() {
+    return ( "CGP Nº" + this.comuna.nombre);
 };
 CGP.prototype.conServicio = function(servicio){
 	this.servicios.push(servicio);
