@@ -61,4 +61,5 @@ class CGP extends POI {
 	static def setIconoCGP(String _ico){
 		ICONO_CGP = _ico
 	}
+	
 }
