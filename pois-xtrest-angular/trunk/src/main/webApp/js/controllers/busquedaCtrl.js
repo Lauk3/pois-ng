@@ -7,16 +7,16 @@ poiApp.controller("busquedaCtrl", function(poiService) {
 			-35.573674, -59.510167));
 	this.usuario.agregarAFavoritos(poiService.imagineYoga);
 	this.criterio = "";
+//
+//	this.buscar = function() {
+//		poiService.findAll(function(response) {
+//			self.resultado = _.map(response.data, POI.asPOI);
+//		});
+//
+//	}
 
-	this.buscar = function() {
-		poiService.findAll(function(response) {
-			self.resultado = _.map(response.data, POI.asPOI);
-		});
-
-	}
-
-	this.buscarPorCriterio = function() {
-		poiService.findByCriterio(criterio, function(response) {
+	this.buscarPorCriterio = function() {console.log("el criterio es: " + self.criterio);
+		poiService.findByCriterio(self.criterio, function(response) {
 			self.resultado = _.map(response.data, POI.asPOI);
 		});
 	};
