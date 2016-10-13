@@ -15,10 +15,14 @@
             <form class="form-inline">
                 <div class="form-group has-warning">
                     <label for="criterio" class="form-control-label sr-only">Criterio de b&uacute;squeda</label>
-                    <input class="form-control" id="criterio" type="text" placeholder="Criterio de B&uacute;squeda"
-                           ng-model="busqueda.criterio" autofocus="autofocus"></input>
+                    
+                  <!--    <input class="form-control" id="criterio" type="text" placeholder="Criterio de B&uacute;squeda"
+                           ng-model="busqueda.criterio" autofocus="autofocus"></input>-->
+                           
+                           <input type="text" class="form-control" placeholder="Criterio de Búsqueda" data-ng-model="busqueda.criterio" 
+                           autofocus="autofocus"/>
                 </div>
-                <button type="submit" class="btn btn-deep-orange" ng-click="busqueda.buscar()">
+                <button type="submit" class="btn btn-deep-orange" data-ng-click="busqueda.buscarPorCriterio()">
                     <!--btn-light-green-->
                     <i class="fa fa-search" aria-hidden="true"> </i> Buscar
                 </button>
@@ -92,7 +96,7 @@
             </div>
             <!--Body-->
 
-                <div ui-view=""></div>
+               <!-- ui-view=""></div> -->
 
             <!--Footer-->
             <div class="modal-footer">
