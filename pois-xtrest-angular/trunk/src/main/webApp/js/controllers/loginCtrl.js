@@ -12,6 +12,8 @@ poiApp.controller('loginCtrl', function(poiService, $state) {
 			$state.go("busqueda");			
 		else
 			this.error = "Información inválida";
+		
+		
 //		var usuario = poiService.crearUsuario(this.usuario);
 //		poiService.iniciarSesionmUIsuario(usuario);
 //		this.usuario = '';
